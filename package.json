@@ -4,7 +4,7 @@
   "description": "milk-lasts-longer-code",
   "main": "app/app.js",
   "scripts": {
-    "start": "http-server",
+    "start": "parallelshell 'http-server' 'npm run server'",
     "server": "node node_modules/json-server/bin/index.js --watch ./server/db.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "http-server": "^0.8.0",
-    "json-server": "^0.8.7"
+    "json-server": "^0.8.7",
+    "parallelshell": "^2.0.0"
   }
 }
