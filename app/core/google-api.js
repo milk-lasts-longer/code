@@ -1,24 +1,14 @@
 /* global google */
+const BASEURL = "http://localhost:3000/connectionTime";
+
 export default class GoogleApi {
-    static search(from, to) {
-        return new Promise(
-            function (resolve, reject) {
-                var directionsService = new google.maps.DirectionsService();
+  static search(from, to) {
+    let params = `?from=${from}&to=${to}`;
 
-                var request = {
-                    origin: from,
-                    destination: to,
-                    travelMode: google.maps.TravelMode.TRANSIT
-                };
-
-                directionsService.route(request, function (response, status) {
-                    if (status == google.maps.DirectionsStatus.OK) {
-                        resolve(response);
-                    } else {
-                        reject(status);
-                    }
-                });
-
-            });
-    }
+    return fetch(BASEURL + params)
+      .then(result => result.json())
+      .then(data => {
+        return data[0].duration;
+      });
+  }
 }
