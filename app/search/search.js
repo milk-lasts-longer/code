@@ -6,19 +6,18 @@ class SearchView extends HTMLElement {
     this.render();
     this.addEventListener('submit', this.search);
   }
-  
+
   search(e) {
     e.preventDefault();
-    
+
     let from = this.querySelector('input[name="from"]').value;
     let to = this.querySelector('input[name="to"]').value;
-    
-    GoogleApi.search(from, to).then(result => {
-      var duration = result.routes[0].legs[0].duration.value;
+
+    GoogleApi.search(from, to).then(duration => {
       router.navigate('movies', { duration: duration });
     });
   }
-  
+
   render() {
     this.innerHTML = `
         <div class="search">
@@ -27,7 +26,7 @@ class SearchView extends HTMLElement {
             <form>
                 <input name="from" type="text" placeholder="from" required>
                 <input name="to" type="text" placeholder="to" required>
-                <button type="submit">Movietime!</button>  
+                <button type="submit">Movietime!</button>
             </form>
         </div>
     `;
