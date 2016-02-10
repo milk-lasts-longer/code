@@ -1,5 +1,4 @@
 /* global fetch */
-const APIKEY = localStorage.getItem('apikey'); // works on my machine ;-)
 const BASEURL = "http://localhost:3000/moviesByTime";
 
 export default class MovieApi {
@@ -10,27 +9,7 @@ export default class MovieApi {
         return fetch(BASEURL + params)
           .then(result => result.json())
           .then(data => {
-            data.movies = data.movies
-              .sort(sortByIMDBRating)
-              .map(addApiKey);
-
             return data;
           });
-
-        function sortByIMDBRating(movieA, movieB) {
-          let ratingA = parseFloat(movieA.imdbVotes);
-          let ratingB = parseFloat(movieB.imdbVotes);
-
-          if (ratingA === ratingB) {
-            return 0;
-          }
-
-          return ratingA < ratingB ? 1 : -1;
-        }
-
-        function addApiKey(movie){
-          movie.omdbImgUrl = `${movie.omdbImgUrl}&apikey=${APIKEY}`;
-          return movie;
-        }
     }
 }
