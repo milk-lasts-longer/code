@@ -12,7 +12,6 @@ export default class MovieApi {
           .then(data => {
             data.movies = data.movies
               .sort(sortByIMDBRating)
-              .slice(0, 9)
               .map(addApiKey);
 
             return data;
