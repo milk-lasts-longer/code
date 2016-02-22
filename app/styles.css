@@ -1,5 +1,5 @@
 body {
-  font-family: 'Helvetica Neue';
+  font-family: 'Helvetica Neue', Sans-Serif;
   background-color: #FFF;
 }
 
@@ -10,6 +10,10 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+}
+form {
+  display: inline;
+  white-space: nowrap;
 }
 input {
   height: 38px;
