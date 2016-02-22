@@ -4,8 +4,9 @@
   "description": "milk-lasts-longer-code",
   "main": "app/app.js",
   "scripts": {
-    "start": "parallelshell 'http-server -p 8081' 'npm run server'",
-    "server": "node node_modules/json-server/bin/index.js --watch ./server/db.json",
+    "start": "parallelshell \"npm run serve\" \"npm run mockedBackend\"",
+    "serve": "node node_modules/http-server/bin/http-server -p 8081",
+    "mockedBackend": "node node_modules/json-server/bin/index.js --watch ./server/db.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Christian Kohler & Stefan Jaeger",
