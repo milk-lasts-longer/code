@@ -15,6 +15,7 @@ class MoviesView extends HTMLElement {
 
   render(data) {
     this.innerHTML = `
+      <a href="/#/search"><button type="submit">New Search</button></a>
       <div class="movies-container">
         ${data.movies.map(this.renderMovie).join("")}
       </div>
