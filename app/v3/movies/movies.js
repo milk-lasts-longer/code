@@ -2,14 +2,13 @@ import MovieApi from '../core/movie-api';
 import MovieTile from '../movie-tile/movie-tile';
 
 class MoviesView extends HTMLElement {
-	createdCallback() {
+  createdCallback() {
     console.log('MovieApi fetch hardcoded to 3420s')
     MovieApi.searchByDuration(3420).then(data => this.render(data));
   }
 
   render(data) {
     this.innerHTML = `
-      <a href="/#/search"><button type="submit">New Search</button></a>
       <div class="movies-container">
         ${data.movies.map(this.renderMovie).join("")}
       </div>
