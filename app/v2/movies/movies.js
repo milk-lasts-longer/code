@@ -1,21 +1,29 @@
-import MovieApi from '../core/movie-api';
 import MovieTile from '../movie-tile/movie-tile';
-import router from '../router/router';
 
 class MoviesView extends HTMLElement {
   createdCallback() {
-    let duration = location.hash.split('=').pop();
-
-    if(duration) {
-      MovieApi.searchByDuration(duration).then(data => this.render(data));
-    } else {
-      router.navigate("search");
-    }
+    this.render({
+      "movies": [{
+        "omdbImgUrl": "/app/movie-thumbnails/tt0080684.jpg",
+        "title": "Star Wars: Episode V - The Empire Strikes Back",
+        "imdbVotes": "8.8",
+        "runtimeOriginal": "124 min"
+      }, {
+        "omdbImgUrl": "/app/movie-thumbnails/tt0133093.jpg",
+        "title": "The Matrix",
+        "imdbVotes": "8.7",
+        "runtimeOriginal": "136 min"
+      }, {
+        "omdbImgUrl": "/app/movie-thumbnails/tt0109707.jpg",
+        "title": "Ed Wood",
+        "imdbVotes": "7.9",
+        "runtimeOriginal": "127 min"
+      }]
+    });
   }
 
   render(data) {
     this.innerHTML = `
-      <a href="/#/search"><button type="submit">New Search</button></a>
       <div class="movies-container">
         ${data.movies.map(this.renderMovie).join("")}
       </div>

@@ -19,7 +19,6 @@ class MoviesView extends HTMLElement {
   renderMovie(movie) {
     return `
       <movie-tile
-        imdb-url="${movie.imdbUrl}"
         image-url="${movie.omdbImgUrl}"
         title="${movie.title}"
         runtime="${movie.runtimeOriginal}"
