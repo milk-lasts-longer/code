@@ -7,9 +7,6 @@ export default class MovieApi {
         let params = `/${duration}`;
 
         return fetch(BASEURL + params)
-          .then(result => result.json())
-          .then(data => {
-            return data;
-          });
+          .then(result => result.json());
     }
 }
